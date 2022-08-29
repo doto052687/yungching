@@ -10,7 +10,7 @@
     @foreach (Item i in list)
     {
     <div>
-        <h3>@i.name</h3>
+        <h3><a asp-action="Item">>@i.name</a></h3>
         <li>價格:@i.price</li>
         <li>數量:@i.quantity</li>
 
