@@ -27,10 +27,11 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public IActionResult Item()
+        public IActionResult Item(string _id,string _name,int _quantity,int _price)
         {
+            Item item = new Item(_id,_name,_quantity,_price);
 
-            return View();
+            return View(item);
         }
 
     }

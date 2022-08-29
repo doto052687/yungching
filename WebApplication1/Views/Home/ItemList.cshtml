@@ -9,11 +9,8 @@
 
     @foreach (Item i in list)
     {
-    <div>
-        <h3><a asp-action="Item">>@i.name</a></h3>
+    <h3>@Html.ActionLink(i.name,"Item",new{_id = i.id,_name = i.name,_quantity = i.quantity,_price = i.price})</h3>
         <li>價格:@i.price</li>
         <li>數量:@i.quantity</li>
-
-    </div>
     }
  

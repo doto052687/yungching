@@ -1,5 +1,30 @@
-﻿@{
+﻿@model WebApplication1.Models.Item
+
+@{
     ViewData["Title"] = "Item";
 
-    var item = ViewBag.item;
+    //var item = ViewBag.item;
 }
+
+
+    <form method="get" action="Item">
+        <div>
+        <label for="_id">ID:</label>
+            <input type="text" name="_id" value="@Model.id">
+        </div>
+        <div>
+            <label for="_name">品名:</label>
+            <input type = "text" name="_name"value="@Model.name">
+        </div>
+        <div>
+            <label for="_price">價格:</label>
+            <input type="text" name="_price"  value="@Model.price">
+        </div>
+        <div>
+            <label for="_quantity">數量:</label>
+            <input type="text" name="_quantity" value=" @Model.quantity">
+        </div>
+        <div>
+            <button type="submit">確定</button>
+        </div>
+</form>
