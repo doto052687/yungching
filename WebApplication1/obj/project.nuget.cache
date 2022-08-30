@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "PQ3Yb/DC+FPT/crhihdYJXr74qWe4IgCH6NCfLvacj31Cyd3g3NDpQv7/DkisrFtnRtiHg98COVkY8mvC/C6aw==",
+  "dgSpecHash": "1LbS86FcYZSca02sNRWwMl9ua5fMmPyqLk4VG79tNItzJ+goOaJ9in79hs5KRUAa6h62AzoOEiZzGPEghLxRUQ==",
   "success": true,
   "projectFilePath": "D:\\hw\\yungching\\yungching\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\林欣頤\\.nuget\\packages\\jquery\\1.8.0\\jquery.1.8.0.nupkg.sha512",
+    "C:\\Users\\林欣頤\\.nuget\\packages\\microsoft.jquery.unobtrusive.ajax\\3.2.6\\microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512",
     "C:\\Users\\林欣頤\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\林欣頤\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\林欣頤\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",

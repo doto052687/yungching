@@ -28,9 +28,10 @@ namespace WebApplication1.Controllers
             DBconnection dbconnection = new DBconnection();
             List<Item> list = dbconnection.getItems();
             ViewBag.List = list;
-
             return View();
         }
+
+
 
         public IActionResult Item(string _id)
         {
@@ -54,24 +55,37 @@ namespace WebApplication1.Controllers
 
         public IActionResult newItem()
         {
+            ViewBag.itemCheck = false;
+
             return View();
         }
 
         [HttpPost]
         public IActionResult newItem(Item item)
         {
-           // System.Diagnostics.Debug.WriteLine("item.id= {0}", item.id);
-
+            // System.Diagnostics.Debug.WriteLine("item.id= {0}", item.id);
+            
             DBconnection dbconnection = new DBconnection();
-            if (dbconnection.isItemExist(item.id))
+            bool itemCheck = dbconnection.isItemExist(item.id);
+            ViewBag.var = itemCheck;
+            if (itemCheck)
             {
                 System.Diagnostics.Debug.WriteLine("物品id已存在,無法新增");
+                return RedirectToAction("newItemAlert");
             }
             else
             {
                 dbconnection.newItem(item);
-            }
-            return RedirectToAction("ItemList");
+                return RedirectToAction("newItem");
+            }          
+            
+        }
+        public IActionResult newItemAlert()
+        {
+
+            ViewBag.itemCheck = true;
+
+            return View("newItem");
         }
 
         public IActionResult deleteItem(string _id)

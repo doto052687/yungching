@@ -72,7 +72,6 @@ namespace WebApplication1.Models
         public bool isItemExist(string _id)
         {
             string id = _id;
-            Item item = new Item();
             SqlConnection sqlConnection = new SqlConnection(connectionString);
             SqlCommand sqlCommand = new SqlCommand(@"SELECT * FROM item WHERE id = @id");
             sqlCommand.Parameters.Add(new SqlParameter("@id", id));
