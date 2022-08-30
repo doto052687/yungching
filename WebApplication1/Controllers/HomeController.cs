@@ -19,9 +19,14 @@ namespace WebApplication1.Controllers
 
         public IActionResult ItemList()
         {
+            /*
             List<Item> list = new List<Item>();
             list.Add(new Item("1111", "first item", 1, 100));
             list.Add(new Item("2222", "second item", 1, 200));
+
+            */
+            DBconnection dbconnection = new DBconnection();
+            List<Item> list = dbconnection.GetItems();
             ViewBag.List = list;
 
             return View();
