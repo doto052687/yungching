@@ -23,21 +23,34 @@ namespace WebApplication1.Controllers
             List<Item> list = new List<Item>();
             list.Add(new Item("1111", "first item", 1, 100));
             list.Add(new Item("2222", "second item", 1, 200));
-
             */
+
             DBconnection dbconnection = new DBconnection();
-            List<Item> list = dbconnection.GetItems();
+            List<Item> list = dbconnection.getItems();
             ViewBag.List = list;
 
             return View();
         }
 
-        public IActionResult Item(string _id,string _name,int _quantity,int _price)
+        public IActionResult Item(string _id)
         {
-            Item item = new Item(_id,_name,_quantity,_price);
+            string id = _id;
+            DBconnection dbconnection = new DBconnection();
+            Item item = dbconnection.getItem(id);
 
             return View(item);
         }
+        
+        [HttpPost]
+        public IActionResult Item(Item item)
+        {
+            System.Diagnostics.Debug.WriteLine("item.id= {0}", item.id);
+            System.Diagnostics.Debug.WriteLine(item.id);
 
+            DBconnection dbconnection = new DBconnection();
+            dbconnection.updateItem(item);
+            return RedirectToAction("ItemList");
+        }
+        
     }
 }

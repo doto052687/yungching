@@ -7,24 +7,24 @@
 }
 
 
-    <form method="get" action="Item">
+    <form method="post" action="/HOME/Item/">
         <div>
         <label for="_id">ID:</label>
-            <input type="text" name="_id" value="@Model.id">
+        <input type="text" name="id" value="@Model.id" readonly="readonly">
         </div>
         <div>
             <label for="_name">品名:</label>
-            <input type = "text" name="_name"value="@Model.name">
+            <input type = "text" name="name"value="@Model.name">
         </div>
         <div>
             <label for="_price">價格:</label>
-            <input type="text" name="_price"  value="@Model.price">
+            <input type="text" name="price"  value="@Model.price">
         </div>
         <div>
             <label for="_quantity">數量:</label>
-            <input type="text" name="_quantity" value=" @Model.quantity">
+            <input type="text" name="quantity" value=" @Model.quantity">
         </div>
         <div>
-            <button type="submit">確定</button>
+            <input  type="submit" value="確定"/>
         </div>
 </form>
