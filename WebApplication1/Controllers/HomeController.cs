@@ -36,6 +36,7 @@ namespace WebApplication1.Controllers
         {
             string id = _id;
             DBconnection dbconnection = new DBconnection();
+
             Item item = dbconnection.getItem(id);
 
             return View(item);
@@ -62,10 +63,30 @@ namespace WebApplication1.Controllers
            // System.Diagnostics.Debug.WriteLine("item.id= {0}", item.id);
 
             DBconnection dbconnection = new DBconnection();
-            dbconnection.newItem(item);
+            if (dbconnection.isItemExist(item.id))
+            {
+                System.Diagnostics.Debug.WriteLine("物品id已存在,無法新增");
+            }
+            else
+            {
+                dbconnection.newItem(item);
+            }
             return RedirectToAction("ItemList");
         }
 
-
+        public IActionResult deleteItem(string _id)
+        {
+            string id = _id;
+            DBconnection dbconnection = new DBconnection();
+            if(dbconnection.isItemExist(id))
+            {
+                dbconnection.deleteItem(id);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("物品不存在");
+            }
+            return RedirectToAction("ItemList");
+        }
     }
 }

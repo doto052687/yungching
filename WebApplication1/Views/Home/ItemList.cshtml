@@ -13,6 +13,7 @@
             <h3>@Html.ActionLink(i.name,"Item",new{_id = i.id})</h3>
             <li>價格:@i.price</li>
             <li>數量:@i.quantity</li>
+    @Html.ActionLink("刪除","deleteItem",new{_id = i.id})
         
     }
     <br />

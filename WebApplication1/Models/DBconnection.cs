@@ -1,11 +1,12 @@
 using System.Data.SqlClient;
+using System.Reflection.PortableExecutable;
 
 namespace WebApplication1.Models
 {
     public class DBconnection
     {
         private readonly string connectionString = "Data Source=DESKTOP-4LPMCOV\\SQLEXPRESS;User ID=web;Password= root;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-    
+         //  取得所有row
         public List<Item> getItems()
         {
             List<Item> items = new List<Item>();
@@ -36,7 +37,7 @@ namespace WebApplication1.Models
             sqlConnection.Close();
             return items;
         }
-
+        //用ID取得row
         public Item getItem(string _id)
         {
             string id = _id;
@@ -67,6 +68,29 @@ namespace WebApplication1.Models
 
             return item;
         }
+        //查詢物品是否存在，回傳BOOL
+        public bool isItemExist(string _id)
+        {
+            string id = _id;
+            Item item = new Item();
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+            SqlCommand sqlCommand = new SqlCommand(@"SELECT * FROM item WHERE id = @id");
+            sqlCommand.Parameters.Add(new SqlParameter("@id", id));
+            sqlCommand.Connection = sqlConnection;
+            sqlConnection.Open();
+
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //修改物品
         public void updateItem(Item item)
         {
             //System.Diagnostics.Debug.WriteLine("item.id= {0}",item.id);
@@ -82,7 +106,7 @@ namespace WebApplication1.Models
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
         }
-
+        //新增物品
         public void newItem(Item item)
         {
             //System.Diagnostics.Debug.WriteLine("item.id= {0}", item.id);
@@ -98,7 +122,19 @@ namespace WebApplication1.Models
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
         }
+        //刪除物品
+        public void deleteItem(string _id)
+        {
+            string id = _id;
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+            SqlCommand sqlCommand = new SqlCommand(@"DELETE FROM item WHERE id = @id");
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.Parameters.Add(new SqlParameter("@id", id));
 
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
 
     }
 }
