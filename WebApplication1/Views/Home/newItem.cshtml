@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "newItem";
+
+    //var item = ViewBag.item;
+}
+
+
+    <form method="post" action="/HOME/newItem/">
+        <div>
+        <label for="id">ID:</label>
+        <input type="text" name="id" >
+        </div>
+        <div>
+            <label for="name">品名:</label>
+            <input type = "text" name="name">
+        </div>
+        <div>
+            <label for="price">價格:</label>
+            <input type="text" name="price"  >
+        </div>
+        <div>
+            <label for="quantity">數量:</label>
+            <input type="text" name="quantity" >
+        </div>
+        <div>
+            <input  type="submit" value="確定"/>
+        </div>
+</form>

@@ -69,7 +69,7 @@ namespace WebApplication1.Models
         }
         public void updateItem(Item item)
         {
-            System.Diagnostics.Debug.WriteLine("item.id= {0}",item.id);
+            //System.Diagnostics.Debug.WriteLine("item.id= {0}",item.id);
             SqlConnection sqlConnection = new SqlConnection(connectionString);
             SqlCommand sqlCommand = new SqlCommand(@"UPDATE item SET name = @name, quantity = @quantity, price = @price WHERE id = @id ");
             sqlCommand.Connection = sqlConnection;
@@ -82,6 +82,23 @@ namespace WebApplication1.Models
             sqlCommand.ExecuteNonQuery();
             sqlConnection.Close();
         }
+
+        public void newItem(Item item)
+        {
+            //System.Diagnostics.Debug.WriteLine("item.id= {0}", item.id);
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+            SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO item (id,name,quantity,price) VALUES (@id,@name,@quantity,@price)");
+            sqlCommand.Connection = sqlConnection;
+            sqlCommand.Parameters.Add(new SqlParameter("@id", item.id));
+            sqlCommand.Parameters.Add(new SqlParameter("@name", item.name));
+            sqlCommand.Parameters.Add(new SqlParameter("@quantity", item.quantity));
+            sqlCommand.Parameters.Add(new SqlParameter("@price", item.price));
+
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
 
     }
 }

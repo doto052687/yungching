@@ -44,13 +44,28 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult Item(Item item)
         {
-            System.Diagnostics.Debug.WriteLine("item.id= {0}", item.id);
-            System.Diagnostics.Debug.WriteLine(item.id);
+            //System.Diagnostics.Debug.WriteLine("item.id= {0}", item.id);
 
             DBconnection dbconnection = new DBconnection();
             dbconnection.updateItem(item);
             return RedirectToAction("ItemList");
         }
-        
+
+        public IActionResult newItem()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult newItem(Item item)
+        {
+           // System.Diagnostics.Debug.WriteLine("item.id= {0}", item.id);
+
+            DBconnection dbconnection = new DBconnection();
+            dbconnection.newItem(item);
+            return RedirectToAction("ItemList");
+        }
+
+
     }
 }
