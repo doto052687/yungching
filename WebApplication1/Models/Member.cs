@@ -4,19 +4,19 @@ namespace WebApplication1.Models
 {
     public class Member
     {
-        public string userId { get; set; }
+        public string userID { get; set; }
         public string userPW { get; set; }
 
 
         public Member()
         {
-            userId = string.Empty;
+            userID = string.Empty;
             userPW = string.Empty;
         }
 
         public Member(string _id,string _pw)
         {
-            userId = _id;
+            userID = _id;
             userPW = _pw;
         }
     }
