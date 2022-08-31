@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+<h1>註冊</h1>
+
+
+
+<form method="post" action="/Member/Register/">
+    <div>
+        <label for="id">ID:</label>
+        <br />
+        <input type="text" name="userId">
+    </div>
+    <div>
+        <label for="name">密碼:</label>
+        <br />
+        <input type="text" name="userPw">
+    </div>
+    <div>
+        <input type="submit" value="確定" />
+    </div>
+</form>
