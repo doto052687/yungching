@@ -2,19 +2,43 @@
     ViewData["Title"] = "Register";
 }
 <h1>註冊</h1>
+<script>
+    function pwCheckAlert() {
+        alert("密碼不同，請重新輸入");
+    }
+    function IDCheck() {
+        alert("帳號已被使用，請重新輸入");
+    }
+</script>
+
+@if (ViewBag.wrongPWcheck != null)
+{
+    <script>window.onload = pwCheckAlert();</script>
+}
+
+
+@if (ViewBag.IDCheck != null)
+{
+    <script>window.onload = IDCheck();</script>
+}
 
 
 
 <form method="post" action="/Member/Register/">
     <div>
-        <label for="id">ID:</label>
+        <label for="id">帳號:</label>
         <br />
-        <input type="text" name="userID">
+        <input type="text" name="_userID">
     </div>
     <div>
         <label for="name">密碼:</label>
         <br />
-        <input type="text" name="userPW">
+        <input type="password" name="_userPW">
+    </div>
+    <div>
+        <label for="name">確認密碼:</label>
+        <br />
+        <input type="password" name="_PWcheck">
     </div>
     <div>
         <input type="submit" value="確定" />

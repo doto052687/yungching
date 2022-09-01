@@ -1,8 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var userID = ViewBag.userID;
+
 }
 
 <div class="text-center">
-    <h1 class="display-4">@Html.ActionLink("註冊","Register","Member")</h1>
+    @if (userID == null){
+        <h1 class="display-4">@Html.ActionLink("註冊","Register","Member")</h1>
+        <br />
+        <h1 class="display-4">@Html.ActionLink("登入","Login","Member")</h1>
+    }
+    else{
+        <h1>hello,@userID</h1>
+    }
     
 </div>

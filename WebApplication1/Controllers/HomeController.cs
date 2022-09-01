@@ -9,6 +9,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.userID = HttpContext.Session.GetString("userID");
             return View();
         }
 
