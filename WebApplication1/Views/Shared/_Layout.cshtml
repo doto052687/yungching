@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var userID = ViewBag.userID;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,6 +31,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ItemList">ItemList</a>
                         </li>
+                        @if (userID == null){
+                             <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Login">登入</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Register">註冊</a>
+                        </li>
+                        }
+                        else{
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Logout">登出</a>
+                            </li>
+                        }
+                       
                     </ul>
                 </div>
             </div>

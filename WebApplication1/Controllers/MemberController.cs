@@ -68,5 +68,11 @@ namespace WebApplication1.Controllers
 
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
