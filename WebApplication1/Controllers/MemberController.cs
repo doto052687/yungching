@@ -15,7 +15,7 @@ namespace WebApplication1.Controllers
         {
             MemberConnection memberConnection = new MemberConnection();
             memberConnection.register(member);
-            return View("Register");
+            return RedirectToAction("Index","Home");
         }
     }
 }

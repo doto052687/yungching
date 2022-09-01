@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "newItem";
-    var itemCheck = ViewBag.itemCheck;
+
 
     //var item = ViewBag.item;
 }
@@ -11,7 +11,7 @@
     }
 </script>
 
-@if (itemCheck)
+@if ( ViewBag.itemCheck != null )
 {
     <script>window.onload = showalert();</script>
 }

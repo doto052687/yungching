@@ -55,7 +55,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult newItem()
         {
-            ViewBag.itemCheck = false;
+           // ViewBag.itemCheck = false;
 
             return View();
         }
@@ -67,26 +67,21 @@ namespace WebApplication1.Controllers
             
             DBconnection dbconnection = new DBconnection();
             bool itemCheck = dbconnection.isItemExist(item.id);
-            ViewBag.var = itemCheck;
+            
             if (itemCheck)
             {
                 System.Diagnostics.Debug.WriteLine("物品id已存在,無法新增");
-                return RedirectToAction("newItemAlert");
+                ViewBag.itemCheck = true;
+                return View();
             }
             else
             {
                 dbconnection.newItem(item);
-                return RedirectToAction("newItem");
-            }          
-            
-        }
-        public IActionResult newItemAlert()
-        {
+                return RedirectToAction("ItemLIst");
+            }
 
-            ViewBag.itemCheck = true;
-
-            return View("newItem");
         }
+
 
         public IActionResult deleteItem(string _id)
         {
