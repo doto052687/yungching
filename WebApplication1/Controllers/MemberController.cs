@@ -53,7 +53,10 @@ namespace WebApplication1.Controllers
         {
             Member member = new Member(_userID, _userPW);
             MemberConnection memberConnection = new MemberConnection();
-            if(memberConnection.passwordCheck(member.userID, member.userPW))
+            //確認帳號是否存在
+
+            //確認密碼是否輸入正確
+            if(memberConnection.isIdUsed(member.userID)&&memberConnection.passwordCheck(member.userID, member.userPW))
             {
                 HttpContext.Session.SetString("userID", member.userID);
 
